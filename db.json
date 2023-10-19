@@ -30,17 +30,17 @@
     },
     "messages": [
         {
-            "message": "hello",
+            "text": "hello",
             "sender": "user",
             "message_id": "0"
         },
         {
-            "message": "hello",
+            "text": "hello",
             "sender": "bot",
             "message_id": "1"
         },
         {
-            "message": "How are you?",
+            "text": "How are you?",
             "sender": "user",
             "message_id": "2"
         }

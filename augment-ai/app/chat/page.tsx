@@ -1,11 +1,6 @@
 "use client";
+import { ChatMessage } from "@/components/ChatMessage";
 import React, { useEffect, useState } from "react";
-
-type Message = {
-  message: string;
-  sender: string;
-  message_id: string;
-};
 
 export default function Chat() {
   const [message, setMessage] = useState("");
@@ -37,7 +32,7 @@ export default function Chat() {
         {
           method: "POST",
           body: JSON.stringify({
-            message: message,
+            text: message,
             sender: "user",
             message_id: Math.random().toString(36),
           }),
@@ -51,7 +46,7 @@ export default function Chat() {
       }
       const newMessage = await response.json();
       const BotMessage = {
-        message: "I'm a bot",
+        text: "I'm a bot",
         sender: "bot",
         message_id: Math.random().toString(36),
       };
@@ -74,7 +69,7 @@ export default function Chat() {
       <div>
         {messages.map((message) => (
           <div key={message.message_id}>
-            <p>{message.message}</p>
+            <ChatMessage message={message}></ChatMessage>
           </div>
         ))}
       </div>
