@@ -1,5 +1,6 @@
 "use client";
 import { ChatMessage } from "@/components/ChatMessage";
+import { SendHorizonalIcon, Space } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 export default function Chat() {
@@ -66,23 +67,35 @@ export default function Chat() {
   return (
     <div>
       <h1>Augment AI.</h1>
+
       <div>
         {messages.map((message) => (
-          <div key={message.message_id}>
+          <div
+            key={message.message_id}
+            className={`
+            flex
+            ${message.sender === "user" ? "justify-end" : ""}`}
+          >
             <ChatMessage message={message}></ChatMessage>
           </div>
         ))}
       </div>
-      <div>
-        <form onSubmit={handleMessageSubmit}>
-          <input
-            type="text"
-            placeholder="Type a message..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <button type="submit">Send</button>
-        </form>
+      <div className={"fixed bottom-0 w-full my-10 flex justify-center "}>
+        <div className="border-solid border-2  m-4 w-full rounded">
+          <form onSubmit={handleMessageSubmit}>
+            <div className="flex justify-center">
+              <textarea
+                className="w-10/12 resize-none m-4 h-24 h-full"
+                placeholder="Type a message..."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+              <button type="submit">
+                <SendHorizonalIcon size={24} />
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -16,19 +16,18 @@ interface Message {
 
 const ChatMessage = ({ message }: { message: Message }) => {
   return (
-    <Card className="w-[350px]">
-      <CardHeader>
-        <CardTitle>Create project</CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form>
-          <div className="grid w-full items-center gap-4">
-            <div>{message.text}</div>
-          </div>
-        </form>
-      </CardContent>
-    </Card>
+    // add border color
+    <div
+      className={`flex border-solid border-2  m-4 w-1/3 rounded ${
+        message.sender === "user" ? "flex-row-reverse" : "border-red-600"
+      }`}
+    >
+      <div className="flex-none mx-6 self-center">image</div>
+      <div className="flex-1 w-4/5">
+        <div>{message.sender}</div>
+        <div>{message.text}</div>
+      </div>
+    </div>
   );
 };
 
